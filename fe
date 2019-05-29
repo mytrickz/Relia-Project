@@ -1,0 +1,59 @@
+from tkinter import *
+import NewBe as be
+import NewBe as be
+rt = Tk()
+rt.title("Pers. Mgt Sys.")
+#==============================
+def add_command():
+    if(len(fn.get())!=0):
+        be.addrec(fn.get(),ln.get(),dpt.get(),sal.get())
+#========= Create Label =======
+r = 2
+l0 = Label(rt,text="")
+l0.grid(row=r-1,column=0)
+
+l1 = Label(rt,text="F.name")
+l1.grid(row=r,column=0)
+
+l2 = Label(rt,text="L.name")
+l2.grid(row=r+1,column=0)
+
+l3 = Label(rt,text="Dept")
+l3.grid(row=r+2,column=0)
+
+l4 = Label(rt,text="Salary")
+l4.grid(row=r+3,column=0)
+
+#====== Create Entry variable=======
+
+fn = StringVar()
+e1 = Entry(rt,textvariable=fn)
+e1.grid(row=r,column=1)
+
+ln = StringVar()
+e2 = Entry(rt,textvariable=ln)
+e2.grid(row=r+1,column=1)
+
+dpt = StringVar()
+e3 = Entry(rt,textvariable=dpt)
+e3.grid(row=r+2,column=1)
+
+sal = StringVar()
+e4 = Entry(rt,textvariable=sal)
+e4.grid(row=r+3,column=1)
+
+#====== list box=======
+lb1 = Listbox(rt,height=6,width=40)
+lb1.grid(row=8,column=0,rowspan=8,columnspan=6)
+
+sb = Scrollbar(rt)
+sb.grid(row=7,column=5,rowspan=8)
+
+lb1.configure(yscrollcommand=sb.set)
+sb.configure(command=lb1.yview)
+
+#========Button================
+b1 = Button(rt,text="Add rec",width=10,command=add_command)
+b1.grid(row=0,column=0)
+
+rt.mainloop()
