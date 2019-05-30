@@ -1,20 +1,51 @@
 import sqlite3
 
 def konnect():
-    con = sqlite3.connect('emps.db')
-    cur = con.cursor()
-    cur.execute("create table if not exists emp (id integer primary key, \
-                                                 fn text, ln text, dept text, \
-                                                 sal integer)")
+    con=sqlite3.connect("emps.db")
+    cur=con.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS emp \
+        (id INTEGER PRIMARY KEY, \
+        fn text, ln text, dept text, sal integer)")
     con.commit()
     con.close()
 
 def addrec(fn,ln,dept,sal):
-    con = sqlite3.connect('emps.db')
-    cur = con.cursor()
-    cur.execute("insert into emp values(null,?,?,?,?)",(fn,ln,dept,sal))
-    print("Just put this in:",fn,ln,dept,sal)
+    con=sqlite3.connect("emps.db")
+    cur=con.cursor()
+    cur.execute("INSERT INTO emp VALUES(NULL,?,?,?,?)",(fn,ln,dept,sal))
     con.commit()
     con.close()
 
+def view():
+    con=sqlite3.connect("emps.db")
+    cur=con.cursor()
+    cur.execute("SELECT * FROM emp")
+    rows=cur.fetchall()
+    con.close()
+    return rows
+
+def dele(id):
+    con = sqlite3.connect("emps.db")
+    cur = con.cursor()
+    cur.execute("delete from emp where id=?",(id,))
+    con.commit()
+    con.close()
+
+def findit(fn="",ln="",dept="",sal=0):
+    con = sqlite3.connect("emps.db")
+    cur = con.cursor()
+    cur.execute("SELECT * FROM emp where fn=? or ln=? or dept=? or sal=?",(fn,ln,dept,sal))
+    rows = cur.fetchall()
+    con.close()
+    return rows
+
+def upt(mid,fn="",ln="",dept="",sal=0):
+    con = sqlite3.connect("emps.db")
+    cur = con.cursor()
+    cur.execute("update emp set fn=?, ln=?, dept=?, sal=? where id=?",(fn,ln,dept,sal,mid))
+    con.commit()
+    con.close()
+
+#==================================
 konnect()
+#==================================
