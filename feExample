@@ -1,59 +1,136 @@
 from tkinter import *
-import NewBe as be
-import NewBe as be
+import BackEnd as be  # backend.py for him
+
+# ============================
 rt = Tk()
-rt.title("Pers. Mgt Sys.")
-#==============================
+rt.wm_title("Personnel Management System.")
+
+
+# ============================
+
+def view_command():
+    lb1.delete(0, END)
+    for row in be.view():
+        lb1.insert(END, row)
+
+
 def add_command():
+    if (len(fn.get()) != 0):
+        be.addrec(fn.get(), ln.get(), dpt.get(), sal.get())
+        # now insert that record
+        # into the listbox
+        lb1.delete(0, END)
+        lb1.insert(END, (fn.get(), ln.get(), dpt.get(), sal.get()))
+
+
+def gtr(event):
+    global tt  # สร้างตัวแปร tt เป็น global (เป็น tuple)
+    yoid = lb1.curselection()[0]  # สร้างตัวแปร yoid เพื่อเก็บ no. ใน Listbox (lb1)
+    tt = lb1.get(yoid)  # รับค่าจาก yoid มาใส่ไว้ใน tt
+    e1.delete(0, END)
+    e1.insert(END, tt[1])
+    e2.delete(0, END)
+    e2.insert(END, tt[2])
+    e3.delete(0, END)
+    e3.insert(END, tt[3])
+    e4.delete(0, END)
+    e4.insert(END, tt[4])
+
+def dele_command():
+    if len(fn.get())!=0:
+        be.dele(tt[0])
+        clearit_command()
+        view_command()
+
+def clearit_command():
+    e1.delete(0,END)
+    e2.delete(0,END)
+    e3.delete(0,END)
+    e4.delete(0,END)
+
+def findit_command():
+    lb1.delete(0,END)
+    for row in be.findit(fn.get(),ln.get(),dpt.get(),sal.get()):
+        lb1.insert(END,row)
+def updt_command():
     if(len(fn.get())!=0):
-        be.addrec(fn.get(),ln.get(),dpt.get(),sal.get())
-#========= Create Label =======
+        be.upt(tt[0],fn.get(),ln.get(),dpt.get(),sal.get())
+        clearit_command()
+        view_command()
+
+
+# ===========Labels for Variables =================
 r = 2
-l0 = Label(rt,text="")
-l0.grid(row=r-1,column=0)
+# rt=Tk()
+l0 = Label(rt, text="")
+l0.grid(row=r - 1, column=0)
+l1 = Label(rt, text="F.Name")
+l1.grid(row=r, column=0)
 
-l1 = Label(rt,text="F.name")
-l1.grid(row=r,column=0)
+l2 = Label(rt, text="L.Name")
+l2.grid(row=r + 1, column=0)
 
-l2 = Label(rt,text="L.name")
-l2.grid(row=r+1,column=0)
+l3 = Label(rt, text="Dept")
+l3.grid(row=r + 2, column=0)
 
-l3 = Label(rt,text="Dept")
-l3.grid(row=r+2,column=0)
+l4 = Label(rt, text="Salary")
+l4.grid(row=r + 3, column=0)
 
-l4 = Label(rt,text="Salary")
-l4.grid(row=r+3,column=0)
-
-#====== Create Entry variable=======
-
+# ==========Data Entry Variables ==================
 fn = StringVar()
-e1 = Entry(rt,textvariable=fn)
-e1.grid(row=r,column=1)
+e1 = Entry(rt, textvariable=fn)
+e1.grid(row=r, column=1)
 
 ln = StringVar()
-e2 = Entry(rt,textvariable=ln)
-e2.grid(row=r+1,column=1)
+e2 = Entry(rt, textvariable=ln)
+e2.grid(row=r + 1, column=1)
 
 dpt = StringVar()
-e3 = Entry(rt,textvariable=dpt)
-e3.grid(row=r+2,column=1)
+e3 = Entry(rt, textvariable=dpt)
+e3.grid(row=r + 2, column=1)
 
 sal = StringVar()
-e4 = Entry(rt,textvariable=sal)
-e4.grid(row=r+3,column=1)
+e4 = Entry(rt, textvariable=sal)
+e4.grid(row=r + 3, column=1)
 
-#====== list box=======
-lb1 = Listbox(rt,height=6,width=40)
-lb1.grid(row=8,column=0,rowspan=8,columnspan=6)
+# ============Listbox================
+lb1 = Listbox(rt, height=6, width=60)
+lb1.grid(row=8, column=0, rowspan=6, \
+         columnspan=6)
 
 sb = Scrollbar(rt)
-sb.grid(row=7,column=5,rowspan=8)
+sb.grid(row=7, column=5, rowspan=7)
 
 lb1.configure(yscrollcommand=sb.set)
 sb.configure(command=lb1.yview)
+lb1.bind('<<ListboxSelect>>', gtr)
+# ===========Buttons=================
 
-#========Button================
-b1 = Button(rt,text="Add rec",width=10,command=add_command)
-b1.grid(row=0,column=0)
+b1 = Button(rt, text="List Recs", width=25, \
+            command=view_command)
+b1.grid(row=0, column=0)
 
+b2 = Button(rt, text="Add Recs", width=25, \
+            command=add_command)
+b2.grid(row=0, column=1)
+
+b3 = Button(rt, text="Delete", width=20, \
+            command=dele_command)
+b3.grid(row=0, column=2)
+
+b6 = Button(rt, text="Clear", width=10, \
+            command=clearit_command)
+b6.grid(row=0, column=6)
+
+b5 = Button(rt, text="Find", width=10, \
+            command=findit_command)
+b5.grid(row=0, column=5)
+
+b4 = Button(rt, text="Update",width=10, \
+            command=updt_command)
+b4.grid(row=0, column=4)
+# ========Bind function===============
+
+# =====================================
 rt.mainloop()
+
