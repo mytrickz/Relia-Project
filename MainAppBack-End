@@ -1,0 +1,43 @@
+import sqlite3
+
+def konnect():
+    con=sqlite3.connect("Reliability DB.db")
+    cur=con.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS DB \
+                (no INTEGER PRIMARY KEY AUTOINCREMENT, \
+	            document No TEXT, section TEXT,product TEXT,requestor TEXT, \
+	            type_request TEXT,target TEXT,actual TEXT,remain TEXT, \
+	            type_condition	TEXT,condition_test	TEXT,temperature TEXT, \
+	            mc_no TEXT,load_test TEXT,input_plan_date TEXT, \
+	            input_plan_time	TEXT,output_plan_date TEXT,output_plan_time TEXT, \
+	            input_actual_date TEXT,input_actual_time TEXT,output_actual_date TEXT, \
+                output_actual_time TEXT)")
+    con.commit()
+    con.close()
+
+def addRec(dn,st,pd,rq,tr,tg):
+    con = sqlite3.connect("Reliability DB.db")
+    cur = con.cursor()
+    cur.execute("INSERT INTO DB VALUES (NULL,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL \
+    ,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)",(dn,st,pd,rq,tr,tg))
+    print((cur.lastrowid))
+    con.commit()
+    con.close()
+
+def finditf2():
+    con = sqlite3.connect("Reliability DB.db")
+    cur = con.cursor()
+    print(cur.lastrowid)
+    cur.execute("SELECT document No, section, product, requestor, type_request, \
+                type_request, target FROM DB where no = (SELECT MAX(no) FROM DB)")
+    rows = cur.fetchall()
+    con.close()
+    return rows
+
+
+
+
+
+
+# ===========
+konnect()
