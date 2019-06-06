@@ -1,0 +1,114 @@
+from tkinter import *
+import beDatabase as be
+
+root = Tk()
+# ======== Frame ===============
+f1 = Frame(root)
+f1.grid(row=0, column=0, sticky='news')
+f2 = Frame(root)
+f2.grid(row=0, column=0, sticky='news')
+f3 = Frame(root)
+f3.grid(row=0, column=0, sticky='news')
+# ==========Function===========
+def raise_frame(frame):
+    frame.tkraise()
+
+def add_commandf2(frame):
+    if (len(dn.get()) != 0):
+        be.addRec(dn.get(),st.get(),pd.get(),rq.get(),tr.get(),tg.get())
+    raise_frame(frame)
+
+def findit_command():
+    lb1.delete(0,END)
+    for row in be.finditf2():
+        lb1.insert(END,row)
+
+# def addCycle(cycle):
+#     i = 0
+#     while i <= cycle:
+
+
+
+# =======MainWindow=======
+mainb1 = Button(f1, text="Register", width="20", command=lambda:raise_frame(f2))
+mainb1.grid(row=1, column=0)
+mainb2 = Button(f1, text="Update Testing", width="20", command=lambda:raise_frame(f2))
+mainb2.grid(row=2, column=0)
+mainb3 = Button(f1, text="Reliability Test Schedule", width="20", command=lambda:raise_frame(f2))
+mainb3.grid(row=3, column=0)
+mainb4 = Button(f1, text="Capacity", width="10")
+mainb4.grid(row=4, column=0)
+mainb5 = Button(f1, text="Exit", width="10", command=root.destroy)
+mainb5.grid(row=4, column=1)
+
+# ==== Frame 2 =====
+dn = StringVar()
+st = StringVar()
+pd = StringVar()
+rq = StringVar()
+tr = StringVar()
+tg = StringVar()
+r=2
+
+f2lb = Label(f2, text ="Reliability - Request form", font ="30")
+f2lb.grid(row = r-1, column = 1)
+
+f2lb1 = Label(f2, text ="1. Document No.", width = 20, anchor='w')
+f2lb1.grid(row = r+1, column = 0)
+
+f2lb2 = Label(f2, text ="2. Section", width = 20, anchor='w')
+f2lb2.grid(row = r+2, column = 0)
+
+f2lb3 = Label(f2, text ="3. Product", width = 20, anchor='w')
+f2lb3.grid(row = r+3, column = 0)
+
+f2lb4 = Label(f2, text ="4. Requester", width = 20, anchor='w')
+f2lb4.grid(row = r+4, column = 0)
+
+f2lb5 = Label(f2, text ="5. Type request", width = 20, anchor='w')
+f2lb5.grid(row = r+5, column = 0)
+
+f2lb6 = Label(f2, text ="6. Target", width = 20, anchor='w')
+f2lb6.grid(row = r+6, column = 0)
+
+# ===Data Entry for variable===
+
+f2e1 = Entry(f2, textvariable = dn)
+f2e1.grid(row = r+1, column = 1)
+
+f2e2 = Entry(f2, textvariable = st)
+f2e2.grid(row = r+2, column = 1)
+
+f2e3 = Entry(f2, textvariable = pd)
+f2e3.grid(row = r+3, column = 1)
+
+f2e4 = Entry(f2, textvariable = rq)
+f2e4.grid(row = r+4, column = 1)
+
+f2e5 = Entry(f2, textvariable = tr)
+f2e5.grid(row = r+5, column = 1)
+
+f2e6 = Entry(f2, textvariable = tg)
+f2e6.grid(row = r+6, column = 1)
+
+# ===========Button Frame2============
+f2b1 = Button(f2, text="Next", width = 15, command=lambda:add_commandf2(f3))
+f2b1.grid(row = r+7, column = 1)
+
+f2b2 = Button(f2, text="cancel", width = 10, command =lambda :raise_frame(f1))
+f2b2.grid(row = r+7, column = 2)
+
+# ==========Frame 3============
+f3b1 = Button(f3, text="Check",command=findit_command)
+f3b1.grid(row=0, column=0)
+lb1 = Listbox(f3, height=6, width=60)
+lb1.grid(row=1, column=0, rowspan=6, \
+         columnspan=6)
+sb = Scrollbar(f3)
+sb.grid(row=1, column=6, rowspan=6)
+
+lb1.configure(yscrollcommand=sb.set)
+sb.configure(command=lb1.yview) # lb1.bind('<<ListboxSelect>>', gtr)
+
+raise_frame(f1)
+root.mainloop()
