@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import beDatabase as be
 
 root = Tk()
@@ -9,24 +10,34 @@ f2 = Frame(root)
 f2.grid(row=0, column=0, sticky='news')
 f3 = Frame(root)
 f3.grid(row=0, column=0, sticky='news')
+f4 = Frame(root)
+f4.grid(row=0, column=0, sticky='news')
+
 # ==========Function===========
 def raise_frame(frame):
     frame.tkraise()
 
-def add_commandf2(frame):
-    if (len(dn.get()) != 0):
-        be.addRec(dn.get(),st.get(),pd.get(),rq.get(),tr.get(),tg.get())
+def input_command(frame):
+    if (len(dn.get()) == 0) or (len(st.get()) == 0) or (len(st.get()) == 0) or (len(pd.get()) == 0)  or (len(rq.get()) == 0) or (len(tg.get()) == 0):
+        messagebox.showinfo("Error", "Please Fill in Empty Box")
+    elif (len(dn.get()) != 0):
+        # be.addRec(dn.get(),st.get(),pd.get(),rq.get(),tr.get(),tg.get())
+        raise_frame(frame)
+        f3t1.insert(END, dn.get())
+        f3t2.insert(END, st.get())
+        f3t3.insert(END, pd.get())
+        f3t4.insert(END, rq.get())
+        f3t5.insert(END, tr.get())
+        f3t6.insert(END, tg.get())
+
+def deleteF3_command(frame):
+    f3t1.delete('1.0', END)
+    f3t2.delete('1.0', END)
+    f3t3.delete('1.0', END)
+    f3t4.delete('1.0', END)
+    f3t5.delete('1.0', END)
+    f3t6.delete('1.0', END)
     raise_frame(frame)
-
-def findit_command():
-    lb1.delete(0,END)
-    for row in be.finditf2():
-        lb1.insert(END,row)
-
-# def addCycle(cycle):
-#     i = 0
-#     while i <= cycle:
-
 
 
 # =======MainWindow=======
@@ -50,26 +61,13 @@ tr = StringVar()
 tg = StringVar()
 r=2
 
-f2lb = Label(f2, text ="Reliability - Request form", font ="30")
-f2lb.grid(row = r-1, column = 1)
-
-f2lb1 = Label(f2, text ="1. Document No.", width = 20, anchor='w')
-f2lb1.grid(row = r+1, column = 0)
-
-f2lb2 = Label(f2, text ="2. Section", width = 20, anchor='w')
-f2lb2.grid(row = r+2, column = 0)
-
-f2lb3 = Label(f2, text ="3. Product", width = 20, anchor='w')
-f2lb3.grid(row = r+3, column = 0)
-
-f2lb4 = Label(f2, text ="4. Requester", width = 20, anchor='w')
-f2lb4.grid(row = r+4, column = 0)
-
-f2lb5 = Label(f2, text ="5. Type request", width = 20, anchor='w')
-f2lb5.grid(row = r+5, column = 0)
-
-f2lb6 = Label(f2, text ="6. Target", width = 20, anchor='w')
-f2lb6.grid(row = r+6, column = 0)
+Label(f2, text ="Reliability - Request form", font ="30").grid(row = r-1, column = 1)
+Label(f2, text ="1. Document No.", width = 20, anchor='w').grid(row = r+1, column = 0)
+Label(f2, text ="2. Section", width = 20, anchor='w').grid(row = r+2, column = 0)
+Label(f2, text ="3. Product", width = 20, anchor='w').grid(row = r+3, column = 0)
+Label(f2, text ="4. Requester", width = 20, anchor='w').grid(row = r+4, column = 0)
+Label(f2, text ="5. Type request", width = 20, anchor='w').grid(row = r+5, column = 0)
+Label(f2, text ="6. Target", width = 20, anchor='w').grid(row = r+6, column = 0)
 
 # ===Data Entry for variable===
 
@@ -92,23 +90,78 @@ f2e6 = Entry(f2, textvariable = tg)
 f2e6.grid(row = r+6, column = 1)
 
 # ===========Button Frame2============
-f2b1 = Button(f2, text="Next", width = 15, command=lambda:add_commandf2(f3))
+f2b1 = Button(f2, text="Next", width = 15, command=lambda:input_command(f3))
 f2b1.grid(row = r+7, column = 1)
 
 f2b2 = Button(f2, text="cancel", width = 10, command =lambda :raise_frame(f1))
 f2b2.grid(row = r+7, column = 2)
 
-# ==========Frame 3============
-f3b1 = Button(f3, text="Check",command=findit_command)
-f3b1.grid(row=0, column=0)
-lb1 = Listbox(f3, height=6, width=60)
-lb1.grid(row=1, column=0, rowspan=6, \
-         columnspan=6)
-sb = Scrollbar(f3)
-sb.grid(row=1, column=6, rowspan=6)
+# ==========Frame 3 Label============
+Label(f3, text ="Confirm Request form", font ="30").grid(row = r-1, column = 1)
+Label(f3, text ="1. Document No.", width = 15, anchor='w').grid(row = r+1, column = 0)
+Label(f3, text ="2. Section", width = 15, anchor='w').grid(row = r+2, column = 0)
+Label(f3, text ="3. Product", width = 15, anchor='w').grid(row = r+3, column = 0)
+Label(f3, text ="4. Requester", width = 15, anchor='w').grid(row = r+4, column = 0)
+Label(f3, text ="5. Type request", width = 15, anchor='w').grid(row = r+5, column = 0)
+Label(f3, text ="6. Target", width = 15, anchor='w').grid(row = r+6, column = 0)
 
-lb1.configure(yscrollcommand=sb.set)
-sb.configure(command=lb1.yview) # lb1.bind('<<ListboxSelect>>', gtr)
+# ========= Frame 3 Button =========
+f3b1 = Button(f3, text="Back", height=2, width=10, command=lambda :deleteF3_command(f2))
+f3b1.grid(row = r+7, column = 2)
+f3b2 = Button(f3, text="OK", height=2, width=5, command=lambda :raise_frame(f4))
+f3b2.grid(row = r+7, column = 1)
+
+# ========= Frame 3 Text =========
+f3t1 = Text(f3, height=1, width=20)
+f3t1.grid(row = r+1, column = 1)
+f3t1.insert(END,dn.get())
+
+f3t2 = Text(f3, height=1, width=20)
+f3t2.grid(row = r+2, column = 1)
+f3t2.insert(END,st.get())
+
+f3t3 = Text(f3, height=1, width=20)
+f3t3.grid(row = r+3, column = 1)
+f3t3.insert(END,pd.get())
+
+f3t4 = Text(f3, height=1, width=20)
+f3t4.grid(row = r+4, column = 1)
+f3t4.insert(END,rq.get())
+
+f3t5 = Text(f3, height=1, width=20)
+f3t5.grid(row = r+5, column = 1)
+f3t5.insert(END,tr.get())
+
+f3t6 = Text(f3, height=1, width=20)
+f3t6.grid(row = r+6, column = 1)
+f3t6.insert(END,tg.get())
+
+# ========Page 4 Variables==============
+c1 = StringVar()
+c2 = StringVar()
+c3 = StringVar()
+c4 = StringVar()
+c5 = StringVar()
+# ========Page 4 Label==============
+Label(f4, text ="Cycle List", font ="30").grid(row = r-1, column = 1)
+Label(f4, text="1. Actual", width=15,anchor='w').grid(row = r+8, column = 0)
+Label(f4, text="2. Actual", width=15,anchor='w').grid(row = r+9, column = 0)
+Label(f4, text="3. Actual", width=15,anchor='w').grid(row = r+10, column = 0)
+Label(f4, text="4. Actual", width=15,anchor='w').grid(row = r+11, column = 0)
+Label(f4, text="5. Actual", width=15,anchor='w').grid(row = r+12, column = 0)
+# ========= Frame 3 Entry =========
+f3e1 = Entry(f4, textvariable = c1, width=5)
+f3e1.grid(row = r, column = 1)
+f3e2 = Entry(f4, textvariable = c2, width=5)
+f3e2.grid(row = r+1, column = 1)
+f3e3 = Entry(f4, textvariable = c3, width=5)
+f3e3.grid(row = r+2, column = 1)
+f3e4 = Entry(f4, textvariable = c4, width=5)
+f3e4.grid(row = r+3, column = 1)
+f3e5 = Entry(f4, textvariable = c5, width=5)
+f3e5.grid(row = r+4, column = 1)
+
+
 
 raise_frame(f1)
 root.mainloop()
