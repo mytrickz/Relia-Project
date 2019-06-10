@@ -3,6 +3,7 @@ from tkinter import messagebox
 import beDatabase as be
 
 root = Tk()
+root.title("Reliability Application")
 # ======== Frame ===============
 f1 = Frame(root)
 f1.grid(row=0, column=0, sticky='news')
@@ -39,18 +40,312 @@ def deleteF3_command(frame):
     f3t6.delete('1.0', END)
     raise_frame(frame)
 
+def type_con_command1(value):
+    if (value == "HT"):
+        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHT, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "HM"):
+        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "HS(A)"):
+        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "HS(L)"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "HT+S"):
+        conHM = ["85°C"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "PCT"):
+        conHM = ["Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "Salt spray"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "LT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+    elif (value == "VT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
+        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6.grid(row=r, column=7)
+
+def con_test_command1(value):
+
+    if value == "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+        f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+        f4e6.grid(row=r, column=9)
+    elif value != "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+        f4e6 = Label(f4, bg = "gray", width=5)
+        f4e6.grid(row=r, column=9)
+
+def type_con_command2(value):
+    if (value == "HT"):
+        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHT, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "HM"):
+        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "HS(A)"):
+        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "HS(L)"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "HT+S"):
+        conHM = ["85°C"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "PCT"):
+        conHM = ["Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "Salt spray"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "LT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+    elif (value == "VT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
+        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7.grid(row=r+1, column=7)
+
+def con_test_command2(value):
+
+    if value == "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
+        f4e7 = Entry(f4, textvariable=temp_spare2, width=6)
+        f4e7.grid(row=r+1, column=9)
+    elif value != "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
+        f4e7 = Label(f4, bg = "gray", width=5)
+        f4e7.grid(row=r+1, column=9)
+
+def type_con_command3(value):
+    if (value == "HT"):
+        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHT, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "HM"):
+        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "HS(A)"):
+        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "HS(L)"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "HT+S"):
+        conHM = ["85°C"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "PCT"):
+        conHM = ["Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "Salt spray"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "LT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+    elif (value == "VT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
+        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8.grid(row=r+2, column=7)
+
+def con_test_command3(value):
+
+    if value == "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+2, column=8)
+        f4e8 = Entry(f4, textvariable=temp_spare3, width=6)
+        f4e8.grid(row=r+2, column=9)
+    elif value != "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+2, column=8)
+        f4e8 = Label(f4, bg = "gray", width=5)
+        f4e8.grid(row=r+2, column=9)
+
+def type_con_command4(value):
+    if (value == "HT"):
+        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHT, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "HM"):
+        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "HS(A)"):
+        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "HS(L)"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "HT+S"):
+        conHM = ["85°C"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "PCT"):
+        conHM = ["Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "Salt spray"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9= OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "LT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+    elif (value == "VT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
+        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9.grid(row=r+3, column=7)
+
+def con_test_command4(value):
+
+    if value == "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+3, column=8)
+        f4e9 = Entry(f4, textvariable=temp_spare4, width=6)
+        f4e9.grid(row=r+3, column=9)
+    elif value != "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+3, column=8)
+        f4e9 = Label(f4, bg = "gray", width=5)
+        f4e9.grid(row=r+3, column=9)
+
+def type_con_command5(value):
+    if (value == "HT"):
+        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHT, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "HM"):
+        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "HS(A)"):
+        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "HS(L)"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "HT+S"):
+        conHM = ["85°C"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "PCT"):
+        conHM = ["Spare"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "Salt spray"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9= OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "LT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+    elif (value == "VT"):
+        conHM = ["-"]
+        Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
+        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9.grid(row=r+4, column=7)
+
+def con_test_command5(value):
+
+    if value == "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+4, column=8)
+        f4e10 = Entry(f4, textvariable=temp_spare5, width=6)
+        f4e10.grid(row=r+4, column=9)
+    elif value != "Spare":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+4, column=8)
+        f4e10 = Label(f4, bg = "gray", width=5)
+        f4e10.grid(row=r+4, column=9)
+
+def confirm():
+    print(test_cond1.get(), cond_test1.get(), temp_spare1.get())
 
 # =======MainWindow=======
+Label(f1, text=" ", width="15").grid(row=0, column=0)
+Label(f1, text="Reliability Application", font="15").grid(row=0, column=1)
 mainb1 = Button(f1, text="Register", width="20", command=lambda:raise_frame(f2))
-mainb1.grid(row=1, column=0)
+mainb1.grid(row=1, column=1, pady=5)
 mainb2 = Button(f1, text="Update Testing", width="20", command=lambda:raise_frame(f2))
-mainb2.grid(row=2, column=0)
+mainb2.grid(row=2, column=1, pady=5)
 mainb3 = Button(f1, text="Reliability Test Schedule", width="20", command=lambda:raise_frame(f2))
-mainb3.grid(row=3, column=0)
+mainb3.grid(row=3, column=1, pady=5)
 mainb4 = Button(f1, text="Capacity", width="10")
-mainb4.grid(row=4, column=0)
+mainb4.grid(row=4, column=1, pady=5)
 mainb5 = Button(f1, text="Exit", width="10", command=root.destroy)
-mainb5.grid(row=4, column=1)
+mainb5.grid(row=4, column=2)
 
 # ==== Frame 2 =====
 dn = StringVar()
@@ -98,12 +393,12 @@ f2b2.grid(row = r+7, column = 2)
 
 # ==========Frame 3 Label============
 Label(f3, text ="Confirm Request form", font ="30").grid(row = r-1, column = 1)
-Label(f3, text ="1. Document No.", width = 15, anchor='w').grid(row = r+1, column = 0)
-Label(f3, text ="2. Section", width = 15, anchor='w').grid(row = r+2, column = 0)
-Label(f3, text ="3. Product", width = 15, anchor='w').grid(row = r+3, column = 0)
-Label(f3, text ="4. Requester", width = 15, anchor='w').grid(row = r+4, column = 0)
-Label(f3, text ="5. Type request", width = 15, anchor='w').grid(row = r+5, column = 0)
-Label(f3, text ="6. Target", width = 15, anchor='w').grid(row = r+6, column = 0)
+Label(f3, text ="1. Document No.", width = 20, anchor='w').grid(row = r+1, column = 0)
+Label(f3, text ="2. Section", width = 20, anchor='w').grid(row = r+2, column = 0)
+Label(f3, text ="3. Product", width = 20, anchor='w').grid(row = r+3, column = 0)
+Label(f3, text ="4. Requester", width = 20, anchor='w').grid(row = r+4, column = 0)
+Label(f3, text ="5. Type request", width = 20, anchor='w').grid(row = r+5, column = 0)
+Label(f3, text ="6. Target", width = 20, anchor='w').grid(row = r+6, column = 0)
 
 # ========= Frame 3 Button =========
 f3b1 = Button(f3, text="Back", height=2, width=10, command=lambda :deleteF3_command(f2))
@@ -142,25 +437,89 @@ c2 = StringVar()
 c3 = StringVar()
 c4 = StringVar()
 c5 = StringVar()
+
+test_cond1 = StringVar()
+test_cond1.set('-')
+test_cond2 = StringVar()
+test_cond2.set('-')
+test_cond3 = StringVar()
+test_cond3.set('-')
+test_cond4 = StringVar()
+test_cond4.set('-')
+test_cond5 = StringVar()
+test_cond5.set('-')
+
+cond_test1 = StringVar()
+cond_test2 = StringVar()
+cond_test3 = StringVar()
+cond_test4 = StringVar()
+cond_test5 = StringVar()
+
+temp_spare1 = StringVar()
+temp_spare2 = StringVar()
+temp_spare3 = StringVar()
+temp_spare4 = StringVar()
+temp_spare5 = StringVar()
 # ========Page 4 Label==============
-Label(f4, text ="Cycle List", font ="30").grid(row = r-1, column = 1)
-Label(f4, text="1. Actual", width=15,anchor='w').grid(row = r+8, column = 0)
-Label(f4, text="2. Actual", width=15,anchor='w').grid(row = r+9, column = 0)
-Label(f4, text="3. Actual", width=15,anchor='w').grid(row = r+10, column = 0)
-Label(f4, text="4. Actual", width=15,anchor='w').grid(row = r+11, column = 0)
-Label(f4, text="5. Actual", width=15,anchor='w').grid(row = r+12, column = 0)
-# ========= Frame 3 Entry =========
-f3e1 = Entry(f4, textvariable = c1, width=5)
+l1=Label(f4, text ="Cycle list", font ="25").grid(row = r-1, column = 3)
+
+Label(f4, text="1. Actual:", width=7, anchor='w').grid(row = r, column = 0)
+Label(f4, text="2. Actual:", width=7,anchor='w').grid(row = r+1, column = 0)
+Label(f4, text="3. Actual:", width=7,anchor='w').grid(row = r+2, column = 0)
+Label(f4, text="4. Actual:", width=7,anchor='w').grid(row = r+3, column = 0)
+Label(f4, text="5. Actual:", width=7,anchor='w').grid(row = r+4, column = 0)
+
+Label(f4, text="Remain:", width=7,anchor='w').grid(row = r, column = 2)
+Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+1, column = 2)
+Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+2, column = 2)
+Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+3, column = 2)
+Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+4, column = 2)
+
+Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r, column = 4)
+Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+1, column = 4)
+Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+2, column = 4)
+Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+3, column = 4)
+Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+4, column = 4)
+
+# ========= Frame 4 Entry =========
+f3e1 = Entry(f4, textvariable = c1, width=6)
 f3e1.grid(row = r, column = 1)
-f3e2 = Entry(f4, textvariable = c2, width=5)
+f3e2 = Entry(f4, textvariable = c2, width=6)
 f3e2.grid(row = r+1, column = 1)
-f3e3 = Entry(f4, textvariable = c3, width=5)
+f3e3 = Entry(f4, textvariable = c3, width=6)
 f3e3.grid(row = r+2, column = 1)
-f3e4 = Entry(f4, textvariable = c4, width=5)
+f3e4 = Entry(f4, textvariable = c4, width=6)
 f3e4.grid(row = r+3, column = 1)
-f3e5 = Entry(f4, textvariable = c5, width=5)
+f3e5 = Entry(f4, textvariable = c5, width=6)
 f3e5.grid(row = r+4, column = 1)
 
+# ========= Frame 4 Text =========
+f4t1 = Text(f4, height=1, width=6,bg="light gray")
+f4t1.grid(row = r, column = 3)
+f4t2 = Text(f4, height=1, width=6,bg="light gray")
+f4t2.grid(row = r+1, column = 3)
+f4t3 = Text(f4, height=1, width=6,bg="light gray")
+f4t3.grid(row = r+2, column = 3)
+f4t4 = Text(f4, height=1, width=6,bg="light gray")
+f4t4.grid(row = r+3, column = 3)
+f4t5 = Text(f4, height=1, width=6,bg="light gray")
+f4t5.grid(row = r+4, column = 3)
+
+# ========= Frame 4 Drop down list =========
+
+conditionTestList = ["HT", "HM", "HS(A)", "HS(L)", "HT+S", "PCT", "Salt spray", "LT", "VT"]
+f4d1 = OptionMenu(f4, test_cond1, *conditionTestList, command=type_con_command1)
+f4d1.grid(row = r, column = 5)
+f4d2 = OptionMenu(f4, test_cond2, *conditionTestList, command=type_con_command2)
+f4d2.grid(row = r+1, column = 5)
+f4d3 = OptionMenu(f4, test_cond3, *conditionTestList, command=type_con_command3)
+f4d3.grid(row = r+2, column = 5)
+f4d4 = OptionMenu(f4, test_cond4, *conditionTestList, command=type_con_command4)
+f4d4.grid(row = r+3, column = 5)
+f4d5 = OptionMenu(f4, test_cond5, *conditionTestList, command=type_con_command5)
+f4d5.grid(row = r+4, column = 5)
+
+Button(f4, text="Confirm", command=confirm).grid(row = r+6, column = 6)
 
 
 raise_frame(f1)
