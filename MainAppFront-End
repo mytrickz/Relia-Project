@@ -2,7 +2,7 @@ from tkinter import *
 r = 2
 
 def test():
-    print(test_cond1.get())
+    print(type_cond1.get())
 
 root = Tk()
 root.title("Reliability Application")
@@ -16,16 +16,11 @@ c3 = StringVar()
 c4 = StringVar()
 c5 = StringVar()
 
-test_cond1 = StringVar()
-test_cond1.set('HT')
-test_cond2 = StringVar()
-test_cond2.set('HT')
-test_cond3 = StringVar()
-test_cond3.set('HT')
-test_cond4 = StringVar()
-test_cond4.set('HT')
-test_cond5 = StringVar()
-test_cond5.set('HT')
+type_cond1 = StringVar()
+type_cond2 = StringVar()
+type_cond3 = StringVar()
+type_cond4 = StringVar()
+type_cond5 = StringVar()
 
 cond_test1 = StringVar()
 cond_test2 = StringVar()
@@ -38,26 +33,22 @@ temp_spare2 = StringVar()
 temp_spare3 = StringVar()
 temp_spare4 = StringVar()
 temp_spare5 = StringVar()
+
+oven1 = StringVar()
+oven2 = StringVar()
+oven3 = StringVar()
+oven4 = StringVar()
+oven5 = StringVar()
+
 # ========Page 4 Label==============
-l1=Label(f4, text ="Cycle List", font ="30").grid(row = r-1, column = 3)
+l1=Label(f4, text ="Cycle List", font ="30").grid(row = r-2, column = 3)
 
-Label(f4, text="1. Actual:", width=7, anchor='w').grid(row = r, column = 0)
-Label(f4, text="2. Actual:", width=7,anchor='w').grid(row = r+1, column = 0)
-Label(f4, text="3. Actual:", width=7,anchor='w').grid(row = r+2, column = 0)
-Label(f4, text="4. Actual:", width=7,anchor='w').grid(row = r+3, column = 0)
-Label(f4, text="5. Actual:", width=7,anchor='w').grid(row = r+4, column = 0)
-
-Label(f4, text="Remain:", width=7,anchor='w').grid(row = r, column = 2)
-Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+1, column = 2)
-Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+2, column = 2)
-Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+3, column = 2)
-Label(f4, text="Remain:", width=7,anchor='w').grid(row = r+4, column = 2)
-
-Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r, column = 4)
-Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+1, column = 4)
-Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+2, column = 4)
-Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+3, column = 4)
-Label(f4, text="Type condition:", width=12,anchor='w').grid(row = r+4, column = 4)
+for i in range(5):
+    n=2
+    n = n+i
+    Label(f4, text=str(i+1)+". Actual:", width=7, anchor='w').grid(row=n, column=0)
+    Label(f4, text="Remain:", width=7, anchor='w').grid(row=n, column=2)
+    Label(f4, text="Type condition:", width=12, anchor='w').grid(row=n, column=4)
 
 # ========= Frame 3 Entry =========
 f3e1 = Entry(f4, textvariable = c1, width=6)
@@ -87,107 +78,235 @@ f4t5.grid(row = r+4, column = 3)
 
 def type_con_command1(value):
     if (value == "HT"):
-        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        condition = ["105°C", "125°C", "85°C", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHT, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "HM"):
-        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        condition = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "HS(A)"):
-        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        condition = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "HS(L)"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "HT+S"):
-        conHM = ["85°C"]
+        condition = ["85°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "PCT"):
-        conHM = ["Spare"]
+        condition = ["Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "Salt spray"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "LT"):
-        conHM = ["-"]
+        condition = ["-40°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
     elif (value == "VT"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r, column=6)
-        f4d6 = OptionMenu(f4, cond_test1, *conHM, command=con_test_command1)
+        f4d6 = OptionMenu(f4, cond_test1, *condition, command=con_test_command1)
         f4d6.grid(row=r, column=7)
 
 def con_test_command1(value):
+    if type_cond1.get() == "HT":
+        if value == "Spare":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.2", "No.4", "No.5"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "105°C":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.1"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "125°C":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.3"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "85°C":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.4"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "HM":
+        if value == "Spare":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.8", "No.10", "No.13", "No.16"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "40°C,93%RH":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.7"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "85°C,85%RH":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.9", "No.17", "No.19", "No.20"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "60°C,93%RH":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg = "gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.12", "No.15"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "PCT":
+        if value == "Spare":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.18"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "HS(A)":
+        if value == "Spare":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.23", "No.24", "No.31"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "-55C(30min)<>125C(30min)":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg="gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.21"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+        elif value == "-40C(30min)<>85C(30min)":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg="gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.22"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "HS(L)":
+        if value == "-":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.25"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "VT":
+        if value == "-":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg="gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.27", "No.30"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "LT":
+        if value == "-40°C":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg="gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.30"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
+    elif type_cond1.get() == "Salt spray":
+        if value == "-":
+            Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
+            f4e6 = Label(f4, bg="gray", width=5)
+            f4e6.grid(row=r, column=9)
+            oven = ["No.28"]
+            Label(f4, text="Oven", width=6, anchor='w').grid(row=r, column=10)
+            f4d11 = OptionMenu(f4, oven1, *oven, command=oven_command)
+            f4d11.grid(row=r, column=11)
 
-    if value == "Spare":
-        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
-        f4e6 = Entry(f4, textvariable=temp_spare1, width=6)
-        f4e6.grid(row=r, column=9)
-    elif value != "Spare":
-        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r, column=8)
-        f4e6 = Label(f4, bg = "gray", width=5)
-        f4e6.grid(row=r, column=9)
 
 def type_con_command2(value):
     if (value == "HT"):
-        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        condition = ["105°C", "125°C", "85°C", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHT, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "HM"):
-        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        condition = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "HS(A)"):
-        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        condition = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "HS(L)"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "HT+S"):
-        conHM = ["85°C"]
+        condition = ["85°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "PCT"):
-        conHM = ["Spare"]
+        condition = ["Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "Salt spray"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "LT"):
-        conHM = ["-"]
+        condition = ["-40°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
     elif (value == "VT"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+1, column=6)
-        f4d7 = OptionMenu(f4, cond_test2, *conHM, command=con_test_command2)
+        f4d7 = OptionMenu(f4, cond_test2, *condition, command=con_test_command2)
         f4d7.grid(row=r+1, column=7)
 
 def con_test_command2(value):
@@ -196,56 +315,81 @@ def con_test_command2(value):
         Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
         f4e7 = Entry(f4, textvariable=temp_spare2, width=6)
         f4e7.grid(row=r+1, column=9)
-    elif value != "Spare":
+        oven = ["No.2", "No.4", "No.5"]
+        Label(f4, text="Oven", width=6, anchor='w').grid(row=r+1, column=10)
+        f4d11 = OptionMenu(f4, oven2, *oven)
+        f4d11.grid(row=r+1, column=11)
+    elif value == "105°C":
         Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
-        f4e6 = Label(f4, bg = "gray", width=5)
+        f4e6 = Label(f4, bg="gray", width=5)
         f4e6.grid(row=r+1, column=9)
+        oven = ["No.1"]
+        Label(f4, text="Oven", width=6, anchor='w').grid(row=r+1, column=10)
+        f4d11 = OptionMenu(f4, oven2, *oven)
+        f4d11.grid(row=r+1, column=11)
+    elif value == "125°C":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
+        f4e6 = Label(f4, bg="gray", width=5)
+        f4e6.grid(row=r+1, column=9)
+        oven = ["No.3"]
+        Label(f4, text="Oven", width=6, anchor='w').grid(row=r+1, column=10)
+        f4d11 = OptionMenu(f4, oven2, *oven)
+        f4d11.grid(row=r+1, column=11)
+    elif value == "85°C":
+        Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+1, column=8)
+        f4e6 = Label(f4, bg="gray", width=5)
+        f4e6.grid(row=r+1, column=9)
+        oven = ["No.4"]
+        Label(f4, text="Oven", width=6, anchor='w').grid(row=r+1, column=10)
+        f4d11 = OptionMenu(f4, oven2, *oven)
+        f4d11.grid(row=r+1, column=11)
+
 
 def type_con_command3(value):
     if (value == "HT"):
-        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        condition = ["105°C", "125°C", "85°C", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHT, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "HM"):
-        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        condition = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "HS(A)"):
-        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        condition = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "HS(L)"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "HT+S"):
-        conHM = ["85°C"]
+        condition = ["85°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "PCT"):
-        conHM = ["Spare"]
+        condition = ["Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "Salt spray"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "LT"):
-        conHM = ["-"]
+        condition = ["-40°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
     elif (value == "VT"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+2, column=6)
-        f4d8 = OptionMenu(f4, cond_test3, *conHM, command=con_test_command3)
+        f4d8 = OptionMenu(f4, cond_test3, *condition, command=con_test_command3)
         f4d8.grid(row=r+2, column=7)
 
 def con_test_command3(value):
@@ -258,52 +402,53 @@ def con_test_command3(value):
         Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+2, column=8)
         f4e6 = Label(f4, bg = "gray", width=5)
         f4e6.grid(row=r+2, column=9)
+    Button(f4, text="เลือกตู้", command=confirm).grid(row=r + 2, column=10, padx=5)
 
 def type_con_command4(value):
     if (value == "HT"):
-        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        condition = ["105°C", "125°C", "85°C", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHT, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "HM"):
-        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        condition = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "HS(A)"):
-        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        condition = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "HS(L)"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "HT+S"):
-        conHM = ["85°C"]
+        condition = ["85°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "PCT"):
-        conHM = ["Spare"]
+        condition = ["Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "Salt spray"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9= OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9= OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "LT"):
-        conHM = ["-"]
+        condition = ["-40°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
     elif (value == "VT"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+3, column=6)
-        f4d9 = OptionMenu(f4, cond_test4, *conHM, command=con_test_command4)
+        f4d9 = OptionMenu(f4, cond_test4, *condition, command=con_test_command4)
         f4d9.grid(row=r+3, column=7)
 
 def con_test_command4(value):
@@ -316,52 +461,53 @@ def con_test_command4(value):
         Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+3, column=8)
         f4e6 = Label(f4, bg = "gray", width=5)
         f4e6.grid(row=r+3, column=9)
+    Button(f4, text="เลือกตู้", command=confirm).grid(row=r + 3, column=10, padx=5)
 
 def type_con_command5(value):
     if (value == "HT"):
-        conHT = ["105°C", "125°C", "85°C", "Spare"]
+        condition = ["105°C", "125°C", "85°C", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHT, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "HM"):
-        conHM = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
+        condition = ["40°C,93%RH", "85°C,85%RH", "60°C,93%RH", "Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "HS(A)"):
-        conHM = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
+        condition = ["-55C(30min)<>125C(30min)", "-40C(30min)<>85C(30min)","Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "HS(L)"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "HT+S"):
-        conHM = ["85°C"]
+        condition = ["85°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "PCT"):
-        conHM = ["Spare"]
+        condition = ["Spare"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "Salt spray"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9= OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9= OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "LT"):
-        conHM = ["-"]
+        condition = ["-40°C"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
     elif (value == "VT"):
-        conHM = ["-"]
+        condition = ["-"]
         Label(f4, text="Condition test:", width=12, anchor='w').grid(row=r+4, column=6)
-        f4d9 = OptionMenu(f4, cond_test5, *conHM, command=con_test_command5)
+        f4d9 = OptionMenu(f4, cond_test5, *condition, command=con_test_command5)
         f4d9.grid(row=r+4, column=7)
 
 def con_test_command5(value):
@@ -374,28 +520,42 @@ def con_test_command5(value):
         Label(f4, text="Temp(Spare):", width=10, anchor='w').grid(row=r+4, column=8)
         f4e6 = Label(f4, bg = "gray", width=5)
         f4e6.grid(row=r+4, column=9)
+    Button(f4, text="เลือกตู้", command=confirm).grid(row=r + 4, column=10, padx=5)
+
+def newWindow(value):
+    g = Tk()
+    K = value
+    g.geometry("300x200")
+    g.mainloop()
+
 def confirm():
-    print(test_cond1.get(), cond_test1.get(), temp_spare1.get())
+    print(type_cond1.get(), cond_test1.get(), temp_spare1.get())
+
+def oven_command(value):
+    print(oven1.get())
+    pass
+
 
 
 conditionTestList = ["HT", "HM", "HS(A)", "HS(L)", "HT+S", "PCT", "Salt spray", "LT", "VT"]
-f4d1 = OptionMenu(f4, test_cond1, *conditionTestList, command=type_con_command1)
+f4d1 = OptionMenu(f4, type_cond1, *conditionTestList, command=type_con_command1)
 f4d1.grid(row = r, column = 5)
-f4d2 = OptionMenu(f4, test_cond2, *conditionTestList, command=type_con_command2)
+f4d2 = OptionMenu(f4, type_cond2, *conditionTestList, command=type_con_command2)
 f4d2.grid(row = r+1, column = 5)
-f4d3 = OptionMenu(f4, test_cond3, *conditionTestList, command=type_con_command3)
+f4d3 = OptionMenu(f4, type_cond3, *conditionTestList, command=type_con_command3)
 f4d3.grid(row = r+2, column = 5)
-f4d4 = OptionMenu(f4, test_cond4, *conditionTestList, command=type_con_command4)
+f4d4 = OptionMenu(f4, type_cond4, *conditionTestList, command=type_con_command4)
 f4d4.grid(row = r+3, column = 5)
-f4d5 = OptionMenu(f4, test_cond5, *conditionTestList, command=type_con_command5)
+f4d5 = OptionMenu(f4, type_cond5, *conditionTestList, command=type_con_command5)
 f4d5.grid(row = r+4, column = 5)
 
 Button(f4, text="Confirm", command=confirm).grid(row = r+6, column = 4)
-Button(f4, text="เลือกตู้", command=confirm).grid(row=r, column=10, padx = 5)
-Button(f4, text="เลือกตู้", command=confirm).grid(row=r+1, column=10, padx = 5)
-Button(f4, text="เลือกตู้", command=confirm).grid(row=r+2, column=10, padx = 5)
-Button(f4, text="เลือกตู้", command=confirm).grid(row=r+3, column=10, padx = 5)
-Button(f4, text="เลือกตู้", command=confirm).grid(row=r+4, column=10, padx = 5)
+
+
+
+
+
+
 
 
 root.mainloop()
