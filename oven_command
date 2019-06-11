@@ -1,6 +1,6 @@
     def oven_command(value):
         print(oven1)
-        if (oven1.get() == "No.1"):
+        if (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.1"):
             a1=Tk ()
             a1.title ('ตู้ที่ 1')
             a1.geometry ("500x300")
@@ -45,7 +45,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.2"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.2"):
             a1=Tk ()
             a1.geometry ("500x300")
             a1.title ('ตู้ที่ 2')
@@ -58,7 +58,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.3"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.3"):
             a1=Tk ()
             a1.title ('ตู้ที่ 3')
             Label (a1 , text='ข้อมูลของตู้ที่ 3')
@@ -104,7 +104,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.4"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.4"):
             a1=Tk ()
             a1.title ('ตู้ที่ 4')
             Label (a1 , text='ข้อมูลของตู้ที่ 4')
@@ -159,7 +159,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 12 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 13 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 13 , column=1)  # ดึงData
-        elif (oven1.get() == "No.5"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.5"):
             a1=Tk ()
             a1.title ('ตู้ที่ 5')
             Label (a1 , text='ข้อมูลของตู้ที่ 5')
@@ -172,7 +172,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.6"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.6"):
             a1=Tk ()
             a1.title ('ตู้ที่ 6')
             Label (a1 , text='ข้อมูลของตู้ที่ 6')
@@ -185,7 +185,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.7"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.7"):
             a1=Tk ()
             a1.title ('ตู้ที่ 7')
             Label (a1 , text='ข้อมูลของตู้ที่ 7')
@@ -198,7 +198,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.8"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.8"):
             a1=Tk ()
             a1.title ('ตู้ที่ 8')
             Label (a1 , text='ข้อมูลของตู้ที่ 8')
@@ -211,7 +211,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.9"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.9"):
             a1=Tk ()
             a1.title ('ตู้ที่ 9')
             Label (a1 , text='ข้อมูลของตู้ที่ 9')
@@ -224,7 +224,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.10"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.10"):
             a1=Tk ()
             a1.title ('ตู้ที่ 10')
             Label (a1 , text='ข้อมูลของตู้ที่ 10')
@@ -237,7 +237,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.11"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.11"):
             a1=Tk ()
             a1.title ('ตู้ที่ 11')
             Label (a1 , text='ข้อมูลของตู้ที่ 11')
@@ -250,7 +250,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.12"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.12"):
             a1=Tk ()
             a1.title ('ตู้ที่ 12')
             Label (a1 , text='ข้อมูลของตู้ที่ 12')
@@ -263,7 +263,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.13"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.13"):
             a1=Tk ()
             a1.title ('ตู้ที่ 13')
             Label (a1 , text='ข้อมูลของตู้ที่ 13')
@@ -276,7 +276,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.14"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.14"):
             a1=Tk ()
             a1.title ('ตู้ที่ 14')
             Label (a1 , text='ข้อมูลของตู้ที่ 14')
@@ -289,7 +289,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.15"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.15"):
             a1=Tk ()
             a1.title ('ตู้ที่ 15')
             Label (a1 , text='ข้อมูลของตู้ที่ 15')
@@ -335,7 +335,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.16"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.16"):
             a1=Tk ()
             a1.title ('ตู้ที่ 16')
             Label (a1 , text='ข้อมูลของตู้ที่ 16')
@@ -348,7 +348,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.17"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.17"):
             a1=Tk ()
             a1.title ('ตู้ที่ 17')
             Label (a1 , text='ข้อมูลของตู้ที่ 17')
@@ -361,7 +361,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.18"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.18"):
             a1=Tk ()
             a1.title ('ตู้ที่ 18')
             Label (a1 , text='ข้อมูลของตู้ที่ 18')
@@ -374,7 +374,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.19"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.19"):
             a1=Tk ()
             a1.title ('ตู้ที่ 19')
             Label (a1 , text='ข้อมูลของตู้ที่ 19')
@@ -387,7 +387,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.20"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.20"):
             a1=Tk ()
             a1.title ('ตู้ที่ 20')
             Label (a1 , text='ข้อมูลของตู้ที่ 20')
@@ -433,7 +433,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.21"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.21"):
             a1=Tk ()
             a1.title ('ตู้ที่ 21')
             Label (a1 , text='ข้อมูลของตู้ที่ 21')
@@ -447,7 +447,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.22"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.22"):
             a1=Tk ()
             a1.title ('ตู้ที่ 22')
             Label (a1 , text='ข้อมูลของตู้ที่ 22')
@@ -461,7 +461,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.23"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.23"):
             a1=Tk ()
             a1.title ('ตู้ที่ 23')
             Label (a1 , text='ข้อมูลของตู้ที่ 23')
@@ -474,7 +474,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.24"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.24"):
             a1=Tk ()
             a1.title ('ตู้ที่ 24')
             Label (a1 , text='ข้อมูลของตู้ที่ 24')
@@ -487,7 +487,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.25"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.25"):
             a1=Tk ()
             a1.title ('ตู้ที่ 25')
             Label (a1 , text='ข้อมูลของตู้ที่ 25')
@@ -500,7 +500,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.26"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.26"):
             a1=Tk ()
             a1.title ('ตู้ที่ 26')
             Label (a1 , text='ข้อมูลของตู้ที่ 26')
@@ -513,7 +513,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.27"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.27"):
             a1=Tk ()
             a1.title ('ตู้ที่ 27')
             Label (a1 , text='ข้อมูลของตู้ที่ 27')
@@ -526,7 +526,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.28"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.28"):
             a1=Tk ()
             a1.title ('ตู้ที่ 28')
             Label (a1 , text='ข้อมูลของตู้ที่ 28')
@@ -539,7 +539,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.29"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.29"):
             a1=Tk ()
             a1.title ('ตู้ที่ 29')
             Label (a1 , text='ข้อมูลของตู้ที่ 29')
@@ -552,7 +552,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.30"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.30"):
             a1=Tk ()
             a1.title ('ตู้ที่ 30')
             Label (a1 , text='ข้อมูลของตู้ที่ 30')
@@ -565,7 +565,7 @@
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 5 , column=1)  # ดึงData
             Label (a1 , text="Balance : " , width=20 , anchor='w').grid (row=r + 6 , column=0)
             Label (a1 , text="" , width=20 , anchor='w').grid (row=r + 6 , column=1)  # ดึงData
-        elif (oven1.get() == "No.31"):
+        elif (oven1.get() or oven2.get()or oven3.get() or oven4.get() or oven5.get() == "No.31"):
             a1=Tk ()
             a1.title ('ตู้ที่ 31')
             Label (a1 , text='ข้อมูลของตู้ที่ 31')
