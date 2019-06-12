@@ -12,12 +12,19 @@ f4.grid(row=0, column=0, sticky='news')
 # ========Page 4 Variables==============
 tg = 1000
 
-c1 = StringVar()
-c1.set(0)
-c2 = StringVar()
-c3 = StringVar()
-c4 = StringVar()
-c5 = StringVar()
+c1 = IntVar()
+c2 = IntVar()
+c3 = IntVar()
+c4 = IntVar()
+c5 = IntVar()
+
+AA = 0
+AB = 0
+AC = 0
+AD = 0
+AE = IntVar()
+
+
 
 type_cond1 = StringVar()
 type_cond2 = StringVar()
@@ -42,47 +49,65 @@ oven2 = StringVar()
 oven3 = StringVar()
 oven4 = StringVar()
 oven5 = StringVar()
-
 def remain1(value):
     i = value
-    r = tg - int(c1.get())
-    print(r)
+    AC = tg
+    AA = AC - c1.get()
+    AA = AA - c2.get()
+    AA = AA - c3.get()
+    AA = AA - c4.get()
+    AA = AA - c5.get()
+    if (AA==0):
+        f4t1=Listbox (f4 , height=1 , width=6 , bg="green")
+        f4t1.grid (row=r + 5 , column=1)
+        f4t1.insert (END , AA)
+
+    elif (AA<0):
+        f4t1=Listbox (f4 , height=1 , width=6 , bg="red")
+        f4t1.grid (row=r + 5 , column=1)
+        f4t1.insert (END , AA)
+
+    elif (AA>0):
+        f4t1=Listbox (f4 , height=1 , width=6 , bg="light gray")
+        f4t1.grid (row=r + 5 , column=1)
+        f4t1.insert (END , AA)
+    f4t1.insert (END , AA)
+    print(AA)
 
 # ========Page 4 Label==============
-l1=Label(f4, text ="Cycle List", font ="30").grid(row = r-2, column = 3)
+l1=Label(f4, text ="Cycle List", font ="30").grid(row = r-2, column = 4)
 
 for i in range(5):
     n=2
     n = n+i
     Label(f4, text=str(i+1)+". Actual:", width=7, anchor='w').grid(row=n, column=0)
-    Label(f4, text="Remain:", width=7, anchor='w').grid(row=n, column=2)
+    Label(f4, text="Remain:", width=7, anchor='w').grid(row=r+5, column=0)
     Label(f4, text="Type condition:", width=12, anchor='w').grid(row=n, column=4)
 
 # ========= Frame 3 Entry =========
+
 f3e1 = Entry(f4, textvariable = c1, width=6)
 f3e1.grid(row = r, column = 1)
+f3e1.bind("<KeyRelease>",remain1)
 f3e2 = Entry(f4, textvariable = c2, width=6)
 f3e2.grid(row = r+1, column = 1)
-f3e2.bind("<Button-1>", remain1)
+f3e2.bind("<KeyRelease>",remain1)
 f3e3 = Entry(f4, textvariable = c3, width=6)
 f3e3.grid(row = r+2, column = 1)
+f3e3.bind("<KeyRelease>",remain1)
 f3e4 = Entry(f4, textvariable = c4, width=6)
 f3e4.grid(row = r+3, column = 1)
+f3e4.bind("<KeyRelease>",remain1)
 f3e5 = Entry(f4, textvariable = c5, width=6)
 f3e5.grid(row = r+4, column = 1)
+f3e5.bind("<KeyRelease>",remain1)
 
 # ========= Frame 3 Entry =========
-f4t1 = Text(f4, height=1, width=6,bg="light gray")
-f4t1.grid(row = r, column = 3)
-f4t2 = Text(f4, height=1, width=6,bg="light gray")
-f4t2.grid(row = r+1, column = 3)
-f4t3 = Text(f4, height=1, width=6,bg="light gray")
-f4t3.grid(row = r+2, column = 3)
-f4t4 = Text(f4, height=1, width=6,bg="light gray")
-f4t4.grid(row = r+3, column = 3)
-f4t5 = Text(f4, height=1, width=6,bg="light gray")
-f4t5.grid(row = r+4, column = 3)
-
+f4t1=Listbox (f4 , height=1 , width=6 , bg="light gray")
+f4t1.grid (row=r + 5 , column=1)
+if(AB==0):
+    AB=1
+    f4t1.insert (END , tg)
 # ========= Frame 4 Drop down list =========
 
 def type_con_command1(value):
@@ -3936,12 +3961,5 @@ f4d5 = OptionMenu(f4, type_cond5, *conditionTestList, command=type_con_command5)
 f4d5.grid(row = r+4, column = 5)
 
 Button(f4, text="Confirm", command=confirm).grid(row = r+6, column = 4)
-
-
-
-
-
-
-
 
 root.mainloop()
